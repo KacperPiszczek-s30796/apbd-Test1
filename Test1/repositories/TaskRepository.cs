@@ -62,7 +62,8 @@ public class TaskRepository: ItaskRepository
         List<Task1> result = new List<Task1>();
         const string query = """
                               Select * from TaskType
-                                 WHERE IdAssignedTo = @Id or IdCreator = @Id;
+                                 WHERE IdAssignedTo = @Id or IdCreator = @Id
+                              Order By Deadline desc;
                              """;
         await using SqlConnection con = new(_connectionString);
         await using SqlCommand command = new SqlCommand(query, con);
